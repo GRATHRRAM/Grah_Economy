@@ -1,2 +1,9 @@
-document.getElementById("Balance").textContent = "200$";
-print("yo")
+var cash = 1000;
+
+document.getElementById("Balance").textContent = "Balance: " + cash.toString() + "$";
+
+function GetCash() {
+	cash += 500;
+	document.getElementById("Balance").textContent = "Balance: " + cash.toString() + "$";
+}
+
