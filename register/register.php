@@ -21,8 +21,6 @@
 		if (!empty($login) && !empty($password)) { 
 			if ($password === $password2) {
 				if(!(strlen($login) > 30 || strlen($password) > 30)) {
-
-					// Zabezpieczamy dane przed SQL Injection
 					$username = $conn->real_escape_string($login);
 
 					$sql = "SELECT * FROM users WHERE login = ?";
@@ -30,8 +28,9 @@
 					$stmt->bind_param("s", $login);
 					$stmt->execute();
 					$result = $stmt->get_result();
+					$stmt->close();
 					
-					 $row = $result->fetch_row();
+					$row = $result->fetch_row();
 					if ($row[0] > 0) {
 						$result->free_result();
 						header("location: register_err_acexist.html");
@@ -45,15 +44,12 @@
 
 					if ($conn->query($sql) === TRUE) {
 						echo "Registration successful!";
-						$_SESSION['username'] = $login;
-						header("location: ../index.php");
+						header("location: ../index.html");
 					} else {
 						echo "Error: " . $conn->error;
 					}
-				} else {header("location: register_err_passtb.html");}
-			} else {header("location: register_err_pass.html");}
-		} else {header("location: register_err_empty.html");}
+				} else {$conn->close();header("location: register_err_passtb.html");}
+			} else {$conn->close();header("location: register_err_pass.html");}
+		} else {$conn->close();header("location: register_err_empty.html");}
 	}
-
-	$conn->close();
 ?>
