@@ -1,111 +1,46 @@
-* {
-	padding: 0;
-	margin: 0;
-  
-	background-color: lightgrey;
-}
-
-.layout {
-	height: 100vh;
-    width: 100vw;
-
-	display: grid;
-	grid:
-    "header header header" auto
-    "leftSide body rightSide" 1fr
-    "footer footer footer" auto
-    / auto 1fr auto;
-}
-
-.header {
-	grid-area: header;
-	
-	background-color: grey;
-	
-	margin: 5px;
-	
-	font-size: 40px;
-	font-style: italic;
-	text-align: center;	
-	
-	border-style: solid;
-	border-width: 5px;
-	border-radius: 25px;
-}
- 
-.body { 
-	grid-area: body;
-	background-color: lightgrey;
-}
-
-.rightSide {
-	grid-area: rightSide;
-	
-	background-color: grey;
-	
-	border-style: solid;
-	border-width: 5px;
-	
-	border-radius: 10px;
-}
-
-#Balance {
-	margin: 5px;
-	padding: 5px;
-	
-	font-size: 20px;
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-	
-	background-color: grey;
-	
-	border-style: solid;
-	border-width: 5px;
-	border-radius: 10px;
-}
-
-.Money1 {
-	position: fixed;
-	margin-bottom: 5px;
-    margin-left : 5px;
-	bottom: 0;
-}
-
-.GetMoney {
-	margin: 10px;
-	padding: 5px;
-	padding-left: 40px;
-	padding-right: 40px;
-	text-align: center;	
-	font-size: 15px;
-}
-
-.SiteReg {	
-	margin: 10px;
-	padding: 5px;
-	padding-left: 40px;
-	padding-right: 40px;
-	text-align: center;	
-	font-size: 15px;
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .SiteLog {
-	position: relative;
-	
-	margin: 10px;
 	padding: 5px;
 	padding-left: 40px;
 	padding-right: 40px;
 	text-align: center;	
 	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif, bold;
+    font-weight: bold;
+	
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);;
 }
 
-/*
-.footer {
-	grid-area: footer;
+.SiteReg {
+	padding: 5px;
+	padding-left: 40px;
+	padding-right: 40px;
+	text-align: center;	
+	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif, bold;
+    font-weight: bold;
 	
-	background-color: white;
-	border-style: solid;
-	border-width: 5px;
+	margin: auto;
+	margin-top: 40px;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.title {
+	margin-top: 15%;
 	
-}*/
+	font-size: 50px;
+	font-family: Arial, Helvetica, sans-serif, bold;
+    font-weight: bold;
+}
