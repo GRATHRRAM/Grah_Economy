@@ -28,6 +28,7 @@
 				<?php
 					echo "<p>Username: " . $_SESSION['username'] . "</p>";
 				?>
+				<button onclick="SiteLog()" class="SiteLog">Login</button>
 				<button onclick="SiteReg()" class="SiteReg">Register</button>
 			</div>
 			
