@@ -15,7 +15,6 @@
 			<div class="header">Grah Bank</div>
 			
 			<div class="body">
-				<p>lmao</p>
 				<div class="Money1"><img src="images/money1.jpg" width="255" height="255" alt="Cash$$$"></div>
 			</div>
 			
