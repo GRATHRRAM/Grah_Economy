@@ -20,8 +20,7 @@
 			</div>
 			
 			<div class="rightSide">
-				<div id="Balance">Balance: 1000$</div>
-				<button onclick="GetCash()" class="GetMoney">Get Money!</button>
+				<div id="Balance">Balance: <?php echo $_SESSION['balance']; ?>$</div>
 			</div>
 			
 			<div class="leftSide">
@@ -33,6 +32,5 @@
 			<!--<div class="footer">Logs</div>-->
 		</section>
 		
-		<script src="main.js"></script>
 	</body>
 </html>
