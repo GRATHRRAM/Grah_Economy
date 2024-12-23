@@ -111,3 +111,14 @@ h2 {
 .input-field:hover {
     transform: scale(1.035);
 }
+
+#ERROR {
+	font-family: serif;
+	font-size: 15px;
+	color: rgb(230, 0, 0);
+	
+	text-align: center;
+	
+	margin: auto;
+	margin-top: 10px;
+}
