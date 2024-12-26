@@ -45,7 +45,7 @@
 							$_SESSION['mainpg_msg'] = "Registration successful!\n Login -> " . $login;
 							
 							$result->free_result();
-							header("location: ../index.html");
+							header("location: ../index.php");
 						} else {
 							echo "Error: " . $conn->error;
 						}

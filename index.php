@@ -13,6 +13,8 @@
 			<button onclick="SiteReg()" class="SiteReg">Register</button>
 		</div>
 		
+		<div class="mainpg_msg"></div>
+		
 		<script src="index.js"></script>
 	</body>
 </html>
