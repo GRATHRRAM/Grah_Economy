@@ -4,7 +4,8 @@
 	$username = "root";        
 	$password = "";             
 	$dbname = "gigabank"; 
-
+	
+	$error_msg = "";
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -42,10 +43,10 @@
 				
 				header("location: ../Bank/index.php");
 			} else {
-				echo "Wrong Password!";
+				$error_msg = "Wrong Password!";
 			}
 		} else {
-			echo "User Don't Exist!";
+			$error_msg = "User Don't Exist!";
 		}
 		
 		$result->free_result();
@@ -77,7 +78,9 @@
 
 				<h2>Password</h2>
 				<input type="password" id="password" name="password" class="input-field" placeholder="Enter your password">
-
+				
+				
+				<div class="error"><?php echo $error_msg;?></div>
 				<br>
 
 				<button type="submit" class="Login">Login</button>

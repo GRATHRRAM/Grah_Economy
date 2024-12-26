@@ -3,5 +3,5 @@ function SiteLog() {
 }
 
 function SiteReg() {
-	window.location.replace("register/register.html");
+	window.location.replace("register/register.php");
 }
