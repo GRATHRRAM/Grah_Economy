@@ -1,5 +1,7 @@
 <?php 
 	session_start();
+	$_SESSION['BANK_$_ERR_MSG'] = null;
+	$_SESSION['BANK_$_OK_MSG'] = null;
 	
 	/*
 	function Check_If_Exist($login, &$conn) {
@@ -25,55 +27,56 @@
 		}
 		
 		if(!empty($_POST['usr2send'])) {
-			if(!empty($_POST['money2send'])) {
-				if(ctype_digit($_POST['money2send'])) { 
-					if(!($_SESSION['balance'] <= intval($_POST['money2send']))) {
-						$username = $conn->real_escape_string($_POST['usr2send']);
-						$sql = "SELECT * FROM users WHERE login = ?";
-						$stmt = $conn->prepare($sql);
-						$stmt->bind_param("s", $username);
-						$stmt->execute();
-						$result = $stmt->get_result();
-						$stmt->close();
-									
-						$row = $result->fetch_row();
-						$result->free_result();
-						
-						if ($row != null) { //user exist
-							$newBalanceReciver = $row[3] + intval($_POST['money2send']);
-							$newBalanceSender  = $_SESSION['balance'] - intval($_POST['money2send']);
-							
-							$sql = "UPDATE users SET balance=? WHERE Id=?";
-							
+			if(!($_POST['usr2send'] === $_SESSION['login'])) {
+				if(!empty($_POST['money2send'])) {
+					if(ctype_digit($_POST['money2send'])) { 
+						if(!($_SESSION['balance'] <= intval($_POST['money2send']))) {
+							$username = $conn->real_escape_string($_POST['usr2send']);
+							$sql = "SELECT * FROM users WHERE login = ?";
 							$stmt = $conn->prepare($sql);
-							$stmt->bind_param("ii", $newBalanceReciver, $row[0]);
-							
-							if ($stmt->execute()) {
-								echo "Operation 1 ok;";
-							} else {
-								echo "Error updating record: " . $conn->error;
-							}
-							
+							$stmt->bind_param("s", $username);
+							$stmt->execute();
+							$result = $stmt->get_result();
 							$stmt->close();
+										
+							$row = $result->fetch_row();
+							$result->free_result();
 							
-							$stmt = $conn->prepare($sql);
-							$stmt->bind_param("ii", $newBalanceSender, $_SESSION['id']);
-							
-							if ($stmt->execute()) {
-								echo "Operation 2 ok;";
-								$_SESSION['balance'] = $newBalanceSender;
-								header("Refresh:0");
-							} else {
-								echo "Error updating record: " . $conn->error;
-							}
-							
-							$stmt->close();
-						} 
-						else { echo "not exist!"; }
-					} else {echo "U Not That Rich Bozo";}
-				} else {echo "Only numbers in money";}
-			} else {echo "money empty";}
-		} else {echo "User empty";}
+							if ($row != null) { //user exist
+								$newBalanceReciver = $row[3] + intval($_POST['money2send']);
+								$newBalanceSender  = $_SESSION['balance'] - intval($_POST['money2send']);
+								
+								$sql = "UPDATE users SET balance=? WHERE Id=?";
+								
+								$stmt = $conn->prepare($sql);
+								$stmt->bind_param("ii", $newBalanceReciver, $row[0]);
+								
+								if (!$stmt->execute()) {
+									$_SESSION['BANK_$_ERR_MSG'] = "Error updating record: " . $conn->error;
+								}
+								
+								$stmt->close();
+								
+								$stmt = $conn->prepare($sql);
+								$stmt->bind_param("ii", $newBalanceSender, $_SESSION['id']);
+								
+								if ($stmt->execute()) {
+									$_SESSION['balance'] = $newBalanceSender;
+									$_SESSION['BANK_$_ERR_MSG'] = null;
+									$_SESSION['BANK_$_OK_MSG'] = "Operation Successful<br>Money Recived<br>By " . $row[1];
+									header("Refresh:3");
+								} else {
+									$_SESSION['BANK_$_ERR_MSG'] = "Error updating record: " . $conn->error;
+								}
+								
+								$stmt->close();
+							} 
+							else {$_SESSION['BANK_$_ERR_MSG'] = "User Don't Exist!";}
+						} else {$_SESSION['BANK_$_ERR_MSG'] = "You Don't Have Enough Money";}
+					} else {$_SESSION['BANK_$_ERR_MSG'] = "Only Numbers Can Be Typed<br>In Money Field";}
+				} else {$_SESSION['BANK_$_ERR_MSG'] = "Money Field Is Empty";}
+			} else {$_SESSION['BANK_$_ERR_MSG'] = "You Can't Send Money To You're Self";}
+		} else {$_SESSION['BANK_$_ERR_MSG'] = "User Field Is Empty";}
 		
 		$conn->close();
 	}
@@ -108,7 +111,8 @@
 					<h2 class="mtitle">Send Money</h2>
 					<input class="if" name="usr2send" placeholder="Username To Recive Money"></input> <br> <br>
 					<input class="if" name="money2send" placeholder="Amount Of Money To Send"></input> <br>
-					<p class="merror">Error</p>
+					<p class="merror"><?php if($_SESSION['BANK_$_ERR_MSG'] != null) {echo $_SESSION['BANK_$_ERR_MSG'];}?></p>
+					<p class="mok"><?php if($_SESSION['BANK_$_OK_MSG'] != null) {echo $_SESSION['BANK_$_OK_MSG'];}?></p>
 					<button class="sendbutton" name="sendbutton" >Send</button>
 				</form>
 			</div>
