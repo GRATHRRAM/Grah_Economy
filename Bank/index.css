@@ -40,6 +40,7 @@
 
 .rightSide {
 	grid-area: rightSide;
+	margin-left: -20%;
 	
 	background-color: grey;
 	
@@ -104,4 +105,83 @@
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif, bold;
     font-weight: bold;
+}
+
+.sendbutton {
+	width: calc(100% - 60px); 
+    margin: 10px 30px;
+    padding: 10px;
+	
+    border-radius: 5px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: rgb(0,0,0);
+	
+	box-sizing: border-box;
+	
+    font-family: Arial, Helvetica, sans-serif, bold;
+    font-weight: bold;
+    font-size: 30px;
+	
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 153, 0);
+	
+    transition: transform 0.2s ease-in-out;
+}
+
+.if {
+	width: calc(100% - 60px); 
+    margin: 0 30px;
+    padding: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: rgb(60, 60, 60);
+    box-sizing: border-box;
+    transition: transform 0.2s ease-in-out;
+}
+
+.sendbutton:hover {
+    transform: scale(1.035);
+}
+
+.sendbutton:active {
+    transform: scale(1.1);
+}
+
+.if:hover {
+    transform: scale(1.035);
+}
+
+.mtitle {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    margin: 10px 30px 10px 30px;
+	text-align: center;
+}
+
+.merror {
+	font-family: serif;
+	font-size: 15px;
+	color: rgb(230, 0, 0);
+	
+	text-align: center;
+	
+	margin: auto;
+	margin-top: 10px;
+}
+
+.SendMoneyFrom {
+	margin: 5%;
+	
+	justify-content: center;
+    align-items: center;
+	
+	box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2), -6px 6px 6px rgba(3, 3, 3, 0.15);
+	
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 5px;
 }

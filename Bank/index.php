@@ -62,6 +62,7 @@
 							if ($stmt->execute()) {
 								echo "Operation 2 ok;";
 								$_SESSION['balance'] = $newBalanceSender;
+								header("Refresh:0");
 							} else {
 								echo "Error updating record: " . $conn->error;
 							}
@@ -104,8 +105,10 @@
 				?>
 				
 				<form method="Post" class="SendMoneyFrom">
-					<input class="usr2send" name="usr2send" placeholder="Username To Recive Monay"></input> <br>
-					<input class="money2send" name="money2send" placeholder="Amount Of Monay To Send"></input> <br>
+					<h2 class="mtitle">Send Money</h2>
+					<input class="if" name="usr2send" placeholder="Username To Recive Money"></input> <br> <br>
+					<input class="if" name="money2send" placeholder="Amount Of Money To Send"></input> <br>
+					<p class="merror">Error</p>
 					<button class="sendbutton" name="sendbutton" >Send</button>
 				</form>
 			</div>
