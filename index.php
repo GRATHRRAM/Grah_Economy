@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php 
+	session_start();
+	
+	$_SESSION['SERVERNAME'] = "localhost";
+	$_SESSION['USERNAME'] = "root";
+	$_SESSION['PASSWORD'] = "";
+	$_SESSION['DBNAME'] = "gigabank";
+?>
 
 <html>
     <head>

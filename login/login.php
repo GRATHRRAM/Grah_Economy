@@ -1,13 +1,9 @@
 <?php 
 	session_start();
-	$servername = "localhost"; 
-	$username = "root";        
-	$password = "";             
-	$dbname = "gigabank"; 
 	
 	$error_msg = "";
 
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($_SESSION['SERVERNAME'], $_SESSION['USERNAME'], $_SESSION['PASSWORD'], $_SESSION['DBNAME']);
 
 
 	if ($conn->connect_error) {
