@@ -1,13 +1,8 @@
 <?php
 	session_start();
-
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "gigabank";
 	$error_msg = "";
 
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($_SESSION['SERVERNAME'], $_SESSION['USERNAME'], $_SESSION['PASSWORD'], $_SESSION['DBNAME']);
 
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -26,7 +21,7 @@
 
 					$sql = "SELECT * FROM users WHERE login = ?";
 					$stmt = $conn->prepare($sql);
-					$stmt->bind_param("s", $login);
+					$stmt->bind_param("s", $username);
 					$stmt->execute();
 					$result = $stmt->get_result();
 					$stmt->close();
