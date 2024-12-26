@@ -42,7 +42,7 @@
 						if ($conn->query($sql) === TRUE) {
 							echo "Registration successful!";
 							
-							$_SESSION['mainpg_msg'] = "Registration successful!\n Login -> " . $login;
+							$_SESSION['mainpg_msg'] = "Registration successful! <br> Login -> " . $login;
 							
 							$result->free_result();
 							header("location: ../index.php");
