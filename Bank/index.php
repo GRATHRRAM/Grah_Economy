@@ -27,7 +27,7 @@
 		if(!empty($_POST['usr2send'])) {
 			if(!empty($_POST['money2send'])) {
 				if(ctype_digit($_POST['money2send'])) { 
-					if($_SESSION['balance'] <= intval($_POST['money2send'])) {
+					if(!($_SESSION['balance'] <= intval($_POST['money2send']))) {
 						$username = $conn->real_escape_string($_POST['usr2send']);
 						$sql = "SELECT * FROM users WHERE login = ?";
 						$stmt = $conn->prepare($sql);
@@ -40,13 +40,13 @@
 						$result->free_result();
 						
 						if ($row != null) { //user exist
-							$newBalanceReciver = $row['balance'] + intval($_POST['money2send']);
+							$newBalanceReciver = $row[3] + intval($_POST['money2send']);
 							$newBalanceSender  = $_SESSION['balance'] - intval($_POST['money2send']);
 							
 							$sql = "UPDATE users SET balance=? WHERE Id=?";
 							
 							$stmt = $conn->prepare($sql);
-							$stmt->bind_param("ii", $newBalanceReciver, $row['Id']);
+							$stmt->bind_param("ii", $newBalanceReciver, $row[0]);
 							
 							if ($stmt->execute()) {
 								echo "Operation 1 ok;";
@@ -57,7 +57,7 @@
 							$stmt->close();
 							
 							$stmt = $conn->prepare($sql);
-							$stmt->bind_param("ii", $newBalanceSender, $_SESSION['Id']);
+							$stmt->bind_param("ii", $newBalanceSender, $_SESSION['id']);
 							
 							if ($stmt->execute()) {
 								echo "Operation 2 ok;";
