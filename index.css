@@ -45,7 +45,7 @@
     font-weight: bold;
 }
 
-.mainpg_msg {
+.err {
 	position: fixed;
 	left: 50%;
 	bottom: 20px;
@@ -55,4 +55,6 @@
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif, bold;
     font-weight: bold;
+	
+	color: rgb(255,0,0);
 }

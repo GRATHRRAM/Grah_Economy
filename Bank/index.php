@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+	
+	if($_SESSION['login'] == null) {header("location: ../index_nlog.php");}
+	
 	$_SESSION['BANK_$_ERR_MSG'] = null;
 	$_SESSION['BANK_$_OK_MSG'] = null;
 	
@@ -94,9 +97,7 @@
 		<section class="layout">
 			<div class="header">Grah Bank</div>
 			
-			<div class="body">
-				<div class="Money1"><img src="images/money1.jpg" width="255" height="255" alt="Cash$$$"></div>
-			</div>
+			<div class="body"></div>
 			
 			<div class="rightSide">
 				<div id="Balance">Balance: <?php echo $_SESSION['balance']; ?>$</div>
@@ -118,7 +119,13 @@
 			</div>
 			
 			<div class="leftSide">
-				<p class="username">Username -> <?php echo $_SESSION['login'];?></p>
+				<div class="info">
+					<h2>Info</h2>
+					<p class="pinfo">Username: <?php echo $_SESSION['login'];?></p>
+					<p class="pinfo">ID: <?php echo $_SESSION['id'];?></p>
+				</div>
+				
+				<div class="Money1"><img src="images/money1.jpg" width="255" height="255" alt="Cash$$$"></div>
 			</div>
 			
 			<!--<div class="footer">Logs</div>-->

@@ -39,6 +39,8 @@
 }
 
 .rightSide {
+	margin: 5px;
+	
 	grid-area: rightSide;
 	margin-left: -20%;
 	
@@ -101,10 +103,18 @@
 	font-size: 15px;
 }
 
-.username {
+p {
+	margin: 5px;
+	margin-top: 10px;
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif, bold;
     font-weight: bold;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 10px;
+	font-size: 30px;
 }
 
 .sendbutton {
@@ -195,4 +205,30 @@
 	
 	margin: auto;
 	margin-top: 10px;
+}
+
+.info {
+	margin: 10px;
+	
+	justify-content: center;
+    align-items: center;
+	
+	box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2), -6px 6px 6px rgba(3, 3, 3, 0.15);
+	
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 5px;
+	
+	padding: 5px;
+	
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, serif;
+	font-variant: small-caps;
+}
+
+.pinfo {
+	margin: 5px;
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, serif;
+	font-variant: small-caps;
 }

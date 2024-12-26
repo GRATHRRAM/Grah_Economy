@@ -26,6 +26,7 @@
 			<h2 class="title">Grah Bank</h2>
 			<button onclick="SiteLog()" class="SiteLog">Login</button>
 			<button onclick="SiteReg()" class="SiteReg">Register</button>
+			<p class="err">YOU ARE NOT LOGGED IN!!!</p>
 		</div>
 		
 		<script src="index.js"></script>
